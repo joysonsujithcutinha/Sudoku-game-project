@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game - Login</title>
+    {% load static %}
+    <!-- bootstrap core css -->
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}" />
+    <!-- font awesome style -->
+    <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet" />
+    <!-- Custom styles for this template -->
+    <link href="{% static 'style.css' %}" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="{% static 'responsive.css' %}" rel="stylesheet" />
+    <style>
+        .content-box {
+            display: flex; /* Use Flexbox */
+            align-items: stretch; /* Stretch items to full height */
+            justify-content: center; /* Center items horizontally */
+            padding: 20px; /* Padding around the box */
+            border: 2px solid black; /* Border around the box */
+            margin: 20px 0; /* Margin outside the box */
+            background-color:bisque; /* Background color */
+        }
+        .content-box img {
+            width: 40%; /* Width of the image */
+            margin-right: 20px; /* Space between image and line */
+        }
+        .divider {
+            border-left: 2px solid black; /* Vertical line */
+            height: 100%; /* Full height */
+            margin: 0 20px; /* Space around the line */
+        }
+        .text-container {
+            display: flex;
+            flex-direction: column; /* Stack text vertically */
+            justify-content: center; /* Center text vertically */
+            height: 100%; /* Full height */
+        }
+        .text-container h1 {
+            font-size: 4rem; /* Font size of the heading */
+            margin: 0; /* Remove default margin */
+        }
+        .text-container p {
+            margin: 20px 0; /* Margin for the paragraph */
+            text-align: center; /* Center paragraph text */
+        }
+        .button-container {
+            text-align: center; /* Center button */
+            margin-top: 20px; /* Space above the button */
+        }
+    </style>
+</head>
+<body>
+    <section class="slider_section position-relative" style="position: fixed;">
+        <div class="slider_bg_box" style="position: fixed;">
+            <img src="{% static 'indexpage.jpeg' %}" alt="">
+        </div>
+        <div class="slider_bg"></div>
+        <div class="container">
+            <div class="col-md-9 col-lg-8">
+                <div class="detail-box" style="padding: 70px 30px;">
+                    <div class="content-box" style="height:400px ; margin-right:-550px; margin-bottom: 100px; background-color:antiquewhite">
+                        <img src="{% static 'image.png' %}" style="margin-top: 20px; margin-bottom: 20px;" alt="">
+                        <div class="divider" ></div>
+                        <div class="text-container">
+                            <h1 style="font-size: 4rem; margin-right:-250px; margin-left:-250px;">Sudoku Game</h1>
+                            <p style="margin-left: 50px;">
+                                Sudoku is a logic-based puzzle where players fill grids (4x4, 6x6, 9x9) with numbers.
+                                The goal is to ensure that every row, column, and subgrid contains all digits without 
+                                repetition. Smaller grids are great for beginners, while the 9x9 variant provides a 
+                                greater challenge, increasing problem-solving skills in a fun way.
+                            </p>
+                            <div class="button-container">
+                                <button id="login" style="margin-right:20px ; border-radius:25px; width:50%; border: 2px solid black; padding: 10px 20px; background-color: green;">
+                                    <a href="{% url 'signin' %}" style="color: black; text-decoration: none;">Login</a>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <header class="header_section">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg custom_nav-container">
+                <!-- Additional navigation items can go here -->
+            </nav>
+        </div>
+    </header>
+    <!-- jQuery -->
+    <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'bootstrap.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'custom.js' %}"></script>
+</body>
+</html>

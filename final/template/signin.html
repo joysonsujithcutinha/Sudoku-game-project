@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game - Login</title>
+    {% load static %}
+     <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}" />
+  <!-- font awesome style -->
+  <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet" />
+  <!-- Custom styles for this template -->
+  <link href="{% static 'style.css' %}" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="{% static 'responsive.css' %}" rel="stylesheet" />
+  <link rel="stylesheet" href="{% static 'signin.css' %}">
+</head>
+<body>
+    <section class="slider_section position-relative">
+        <div class="slider_bg_box">
+          <img src="{% static 'back.jpg' %}" alt="">
+        </div>
+        <div class="slider_bg"></div>
+        <div class="container" style="margin-left: 410px;margin-right: -150px;">
+          <div class="col-md-9 col-lg-8">
+            <div class="detail-box">
+              <h1 style="font-size: 4rem; margin-right: 60px; margin-left: -60px;">
+                Sudoku Game
+              </h1>
+              <div class="container">
+                <div class="login-box" style="background-color: transparent;">
+                    <h2>Login</h2>
+            {% if messages %}
+                {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}<p class="msg">{{ message }}</p>{% endif %}
+    {% endfor %}
+                {% endif %}
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="textbox">
+                    <input type="text" placeholder="Username" name="username" required>
+                </div>
+                <div class="textbox">
+                    <input type="password" placeholder="Password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+            </form>
+                <p class="message">Not registered ? <a href="{% url 'signup' %}" style="color: green;">Create an account</a></p>
+        </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+      <!-- jQery -->
+  <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+  <!-- bootstrap js -->
+  <script src="{% static 'bootstrap.js' %}"></script>
+  <!-- custom js -->
+  <script src="{% static 'custom.js' %}"></script>
+</body>
+</html>

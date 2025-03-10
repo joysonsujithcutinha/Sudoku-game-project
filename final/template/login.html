@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game Login</title>
+    {% load static %}
+    <!-- bootstrap core css -->
+ <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}" />
+ <!-- font awesome style -->
+ <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet" />
+ <!-- Custom styles for this template -->
+ <link href="{% static 'style.css' %}" rel="stylesheet" />
+ <!-- responsive style -->
+ <link href="{% static 'responsive.css' %}" rel="stylesheet" />
+ <link rel="stylesheet" href="{% static 'login.css' %}">
+</head>
+<body>
+    <section class="slider_section position-relative">
+        <div class="slider_bg_box" style="position: fixed;">
+          <img src="{% static 'back.jpg' %}" alt="">
+        </div>
+        <div class="slider_bg"></div>
+        <div class="container">
+          <div class="col-md-9 col-lg-8">
+            <div class="detail-box">
+              <h1 style="margin-right: 10px;font-size: 4rem;color: black;margin-right:-500px;">
+                Sudoku Game
+              </h1>
+              <div class="login-box" style="margin-right: -500px;">
+                <h2>signup Page</h2>
+              <div class="login-containe">
+        {% if messages %}
+        {% for message in messages %}
+{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}<p class="lo">{{ message }}</p>{% endif %}
+{% endfor %}
+        {% endif %}
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="textbox">
+                <input type="text" placeholder="Username" name="username" required>
+            </div>
+            <div class="textbox">
+                <input type="text" placeholder="Full Name:" name="name" required>
+            </div>
+            <div class="textbox">
+                <input type="email" placeholder="Email Address:" name="email" required>
+            </div>
+            <div class="textbox">
+                <input placeholder="Date Of Birth:" class="textbox-n" type="text" onfocus="(this.type='date')" onblur="(this.type='text')"
+                 max="2011-09-16" name="dob" />
+            </div>
+            <div class="textbox">
+                <select id="country" name="country" required>
+                    <option value="">Select your country</option>
+                    <option value="usa">United States</option>
+                    <option value="canada">Canada</option>
+                    <option value="uk">United Kingdom</option>
+                    <option value="india">India</option>
+                    <option value="china">China</option>
+                    <option value="pakistan">Pakistan</option>
+                    <option value="ireland">Ireland</option>
+                    <option value="srilanka">Srilanka</option>
+                    <option value="newzeland">New Zeland</option>
+                    <option value="australia">Australia</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div class="textbox">
+                <input type="password" placeholder="Password:" name="password" required>
+            </div>
+            <div class="textbox">
+                <input type="password" placeholder="Confirm Password:" name="cnfpassword" required>
+            </div>
+            <button type="submit">Submit</button>
+
+            <br><p>Account already created ?  <a href="{% url 'signin' %}">Click here</a></p>   
+        </form>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'bootstrap.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'custom.js' %}"></script>
+</body>
+</html>

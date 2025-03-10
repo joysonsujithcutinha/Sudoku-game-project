@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    {% load static %}
+    <!-- bootstrap core css -->
+ <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}" />
+ <!-- font awesome style -->
+ <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet" />
+ <!-- Custom styles for this template -->
+ <link href="{% static 'style.css' %}" rel="stylesheet" />
+ <!-- responsive style -->
+ <link href="{% static 'responsive.css' %}" rel="stylesheet" />
+ <link rel="stylesheet" href="{% static 'leaderboard.css' %}" />
+</head>
+<body puzzletype="{{ puzzletype }}" difficultylevel="{{ difficulty }}">
+  
+    {% csrf_token %}
+    <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+          <div class="custom_menu-btn">
+                <button onclick="openNav()" style="background-color:white;">
+                  <span class="s-1"> </span>
+                  <span class="s-2"> </span>
+                  <span class="s-3"> </span>
+                </button>
+                <div id="myNav" class="overlay">
+                  <div class="overlay-content">
+                    <a href="{% url 'signin' %}">Login</a>
+                    <a href="{% url 'rules' %}">Rules</a>
+                    <a href="{% url 'puzzlemain' %}">New Game</a>
+                    <a href="{% url 'leaderboard' %}">Leaderboard</a>
+                    <a href="{% url 'solver' %}">Solver</a>
+                    <a href="{% url 'tutor' %}">Tutor</a>
+                    <a href="{% url 'about' %}">About</a>
+                  </div>
+                </div>
+              </div>
+             </nav>
+            </div>
+      </header>   
+      
+{% if Duration %}
+<div id="joverlay" onclick="joff()">
+  <div id="jtext">Congrats, you won the game in {{ Duration }}<br>
+    {% if personal_best %}
+                This is your personal best
+                {% endif %}
+            {% endif %}
+  </div>
+</div>
+
+    <section class="slider_section position-relative">
+        <div class="slider_bg_box">
+          <img src="{% static 'back.jpg' %}" alt="">
+        </div>
+        <div class="slider_bg"></div>
+        <div class="container" style="margin-right: -80px;">
+          <div class="col-md-9 col-lg-8">
+            <div class="detail-box">
+              <h1 style="margin-right: -358px;font-size: 4rem; margin-left: -300px;">Game Leaderboard</h1>
+      <div id="additional-controls">
+        <form action="" method="post" name="myForm" onsubmit="return checkInputs()">
+            {% csrf_token %}
+            <div class="proper" style="margin-right: -190px; margin-left:-140px; padding-top: 40px;">
+            <label for="puzztype">Puzzle Type:</label>
+            <select id="puzzle" name="puzz">
+              <option value="">-Select-</option>
+              <option value="4x4">4X4</option>
+              <option value="6x6">6X6</option>
+              <option value="9x9">9X9</option>
+            </select>
+            <label for="difflevel">Difficulty Level:</label>
+            <select id="difficulty" name="diff">
+              <option value="">-Select-</option>
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+            <button style="border-radius: 5px;" >Result</button>
+            </div>
+          </form>       
+    </div>
+  
+   <h3 style="margin-left:-190px; margin-right:-270px; padding-top:30px;"> Ranking for {{puzzletype}} type and {{level}} level</h3>
+    <table style="margin-right:100px;">
+        <tr>
+            <th>Rank</th>
+            <th>UserName</th>
+            <th>Duration</th>
+        </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ item.user_name }}</td>
+            <td>{{ item.duration }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <script>
+      function showMessage() {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'flex'; // Show the modal
+    document.body.classList.add('blur-background'); // Apply blur to background
+}
+
+function closeModal() {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'none'; // Hide the modal
+    document.body.classList.remove('blur-background'); // Remove blur from background
+}
+  </script>
+  
+    </div>
+    </div>
+    </div>
+    </section>
+    <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'bootstrap.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'custom.js' %}"></script>
+    <script type="module" src="{% static 'puzzlemain.js' %}"></script>
+    <script>
+      function checkInputs() {
+  
+    let i = document.getElementById('puzzle').value;
+    let j = document.getElementById('difficulty').value;
+    if (i === '' || j === '') {
+      
+      return false;
+    }
+    return true;
+}
+function joff() {
+    document.getElementById("joverlay").style.display = "none";
+}
+    </script>
+</body>
+</html>

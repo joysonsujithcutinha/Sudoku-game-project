@@ -1,0 +1,192 @@
+/* Base styling */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* Header styles */
+#head {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center items horizontally */
+    gap: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 9px;
+}
+
+/* Header image styling */
+#head img {
+    width: 70px;
+    height: 65px;
+}
+
+/* Header text styling */
+#head h1 {
+    margin: 0; /* Remove default margin */
+    font-size: xxx-large;
+}
+
+/* Controls container styling */
+#controls {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center items horizontally */
+    gap: 15px;
+    margin-top: -30px; /* Adjusted margin to align properly */
+    margin-bottom: 20px;
+    padding: 25px;
+    border-radius: 5px;
+    width: 100%;
+}
+
+/* Dropdown container styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown button styling */
+.dropbtn {
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0;
+    list-style-type: none;
+}
+
+/* Dropdown menu styling */
+.dropdown-content li {
+    position: relative;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+#sudoku-grid {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* General cell styling */
+#sudoku-grid td {
+    width: var(--cell-size, 40px);
+    height: var(--cell-size, 40px);
+    border: 1px solid #333;
+    text-align: center;
+    vertical-align: middle;
+    font-size: var(--font-size, 20px);
+    box-sizing: border-box;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color:green;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Dropdown submenu styling */
+.dropdown-submenu:hover .dropdown-menu {
+    display: block;
+}
+
+/* Dropdown submenu styling */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    background-color: green;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+    padding: 10px;
+    border-radius: 5px;
+    list-style-type: none;
+}
+
+/* Ensure the dropdown menu items are properly spaced */
+.dropdown-menu li {
+    margin: 0;
+}
+
+/* Dropdown submenu item styling */
+.dropdown-menu a {
+    padding: 12px 16px;
+}
+
+/* Adjusting hover for submenu items */
+.dropdown-menu a:hover {
+    background-color: green;
+}
+
+/* Button styling */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:green;
+    color: black;
+    border-radius: 15px;
+}
+#buttons-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 20px; /* Space between buttons */
+    margin-top: 20px; /* Add some space above the buttons */
+}
+
+a {
+    color:black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration:none; 
+    cursor:pointer;  
+}
+
+
+/* Define grid-specific styles using CSS variables */
+body[puzzletype="4x4"] {
+    --cell-size: 40px;
+    --font-size: 20px;
+}
+
+body[puzzletype="6x6"] {
+    --cell-size: 40px;
+    --font-size: 20px;
+}
+
+body[puzzletype="9x9"] {
+    --cell-size: 40px;
+    --font-size: 20px;
+}
+
+/* Pause overlay styling */
+

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    {% load static %}
+    <!-- bootstrap core css -->
+ <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}" />
+ <!-- font awesome style -->
+ <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet" />
+ <!-- Custom styles for this template -->
+ <link href="{% static 'style.css' %}" rel="stylesheet" />
+ <!-- responsive style -->
+ <link href="{% static 'responsive.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'solver.css' %}" />
+<link rel="stylesheet" href="{% static 'puzzlemain.css' %}" />
+
+</head>
+<body puzzletype="9x9">
+    {% csrf_token %}
+    <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+              <div class="custom_menu-btn">
+                <button onclick="openNav()" style="background-color:beige;">
+                  <span class="s-1"> </span>
+                  <span class="s-2"> </span>
+                  <span class="s-3"> </span>
+                </button>
+                <div id="myNav" class="overlay">
+                  <div class="overlay-content">
+                    <a href="{% url 'signin' %}">Login</a>
+                    <a href="{% url 'rules' %}">Rules</a>
+                    <a href="{% url 'puzzlemain' %}">New Game</a>
+                    <a href="{% url 'leaderboard' %}">Leaderboard</a>
+                    <a href="{% url 'solver' %}">Solver</a>
+                    <a href="{% url 'tutor' %}">Tutor</a>
+                    <a href="{% url 'about' %}">About</a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            </div>
+      </header>
+      <!-- end header section -->
+      <!-- slider section -->
+      <section class="slider_section position-relative">
+        <div class="slider_bg_box">
+          <img src="{% static 'back.jpg' %}" alt="">
+        </div>
+        <div class="slider_bg"></div>
+        <div class="container" style="margin-right: -20px;margin-top: -50px;">
+          <div class="col-md-9 col-lg-8">
+            <div class="detail-box" style="margin-right: 00px;">
+                <div id="left" style="margin-left: -200px;">
+              <h1 style="margin-right: -600px; font-size: 4rem;">
+                Sudoku Tutor
+              </h1><br>
+              <div class="sentence" id="sentence" style="margin-left: 400px; margin-right: 100px; height: 75px;width: 600px;margin-top: -20px;"><p><b>welcome to Sudoku Tutor code,Here you will be trained how to Play & solve a Sudoku.
+                Please Click on Next Button to go to the next step</b></p>
+              </div>
+    <div id="buttons-container" style="margin-left: 100px;"></div>
+      <button id="solve" style="margin-right: -650px; width: 20%; display:inline-grid; margin-top:-30px;">Start</button>
+  </div><br/><br/>
+  <div id="game-container">
+    <div id="sudoku-container" style="margin-left: 170px;">
+        <table id="sudoku-grid" style="background-color: white; display:inline-grid; margin-right:-650px;margin-left: -300px;"></table>
+    </div><br>
+    </div>
+</div>
+    
+  </div>
+  </div>
+
+  </section>
+  <script> var puzzlegrid = "{{ initialgrid }}"; </script>
+  <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+  <!-- bootstrap js -->
+  <script src="{% static 'bootstrap.js' %}"></script>
+  <!-- custom js -->
+  <script src="{% static 'custom.js' %}"></script>
+  <script type="module" src="{% static 'tutor.js' %}"></script>
+
+</body>
+</html>

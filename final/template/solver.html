@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    {% load static %}
+    <!-- bootstrap core css -->
+ <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}" />
+ <!-- font awesome style -->
+ <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet" />
+ <!-- Custom styles for this template -->
+ <link href="{% static 'style.css' %}" rel="stylesheet" />
+ <!-- responsive style -->
+ <link href="{% static 'responsive.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'solver.css' %}" />
+</head>
+<body puzzletype="{{ puzzletype }}">
+    {% csrf_token %}
+    <header class="header_section">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+              <div class="custom_menu-btn">
+                <button onclick="openNav()" style="background-color:beige;">
+                  <span class="s-1"> </span>
+                  <span class="s-2"> </span>
+                  <span class="s-3"> </span>
+                </button>
+                <div id="myNav" class="overlay">
+                  <div class="overlay-content">
+                    <a href="{% url 'signin' %}">Login</a>
+                    <a href="{% url 'rules' %}">Rules</a>
+                    <a href="{% url 'puzzlemain' %}">New Game</a>
+                    <a href="{% url 'leaderboard' %}">Leaderboard</a>
+                    <a href="{% url 'solver' %}">Solver</a>
+                    <a href="{% url 'tutor' %}">Tutor</a>
+                    <a href="{% url 'about' %}">About</a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            </div>
+      </header>
+      <!-- end header section -->
+      <!-- slider section -->
+      <section class="slider_section position-relative">
+        <div class="slider_bg_box">
+          <img src="{% static 'back.jpg' %}" alt="">
+        </div>
+        <div class="slider_bg"></div>
+        <div class="container">
+          <div class="col-md-9 col-lg-8">
+            <div class="detail-box" style="margin-right: -100px;">
+                <div id="left" style="margin-left: -200px;">
+              <h1 style="margin-right: -320px; font-size: 4rem;">
+                Sudoku Solver
+              </h1><br>
+    <label for="puzztype" style="margin-right: -300px;">Puzzle Type:</label>
+    <select id="puzzle" name="puzz" style="margin-right: -300px;">
+        <option value="4x4">4X4</option>
+        <option value="6x6">6X6</option>
+        <option value="9x9">9X9</option>
+    </select><br/><br/>
+
+    <table id="sudoku-grid" style="display: inline-grid; margin-right:-300px;background-color: white;"></table><br/>
+</div>
+    <div id="buttons-container" style="margin-left: 100px;">
+      <button id="solve">Solve</button>
+      <button id="clear">Clear</button>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </section>
+  <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+  <!-- bootstrap js -->
+  <script src="{% static 'bootstrap.js' %}"></script>
+  <!-- custom js -->
+  <script src="{% static 'custom.js' %}"></script>
+  <script type="module" src="{% static 'solver.js' %}"></script>
+</body>
+</html>

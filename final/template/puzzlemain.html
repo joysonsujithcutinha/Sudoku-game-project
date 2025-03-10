@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}" />
+ <!-- font awesome style -->
+ <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet" />
+ <!-- Custom styles for this template -->
+ <link href="{% static 'style.css' %}" rel="stylesheet" />
+ <!-- responsive style -->
+ <link href="{% static 'responsive.css' %}" rel="stylesheet" />
+ <link rel="stylesheet" href="{% static 'puzzlemain.css' %}" />
+</head>
+<body puzzletype="{{ puzzletype }}" difficultylevel="{{ difficulty }}" puzzle_id="{{puzzle_id}}">
+    {% csrf_token %}
+    <header class="header_section">
+        <div class="container-fluid">
+          <div class="custom_menu-btn">
+                <button onclick="openNav()" style="background-color:beige;">
+                  <span class="s-1"> </span>
+                  <span class="s-2"> </span>
+                  <span class="s-3"> </span>
+                </button>
+                <div id="myNav" class="overlay">
+                    <div class="overlay-content">
+                        <a href="{% url 'signin' %}">Login</a>
+                        <a href="{% url 'rules' %}">Rules</a>
+                        <a href="{% url 'puzzlemain' %}">New Game</a>
+                        <a href="{% url 'leaderboard' %}">Leaderboard</a>
+                        <a href="{% url 'solver' %}">Solver</a>
+                        <a href="{% url 'tutor' %}">Tutor</a>
+                        <a href="{% url 'about' %}">About</a>
+                      </div>
+                </div>
+              </div>
+            </div>
+      </header>
+      <section class="slider_section position-relative">
+        <div class="slider_bg_box" style="height: 200%;">
+          <img src="{% static 'back.jpg' %}" alt="">
+        </div>
+        <div class="slider_bg_box">
+          <img src="" alt="">
+        </div>
+        <div class="slider_bg"></div>
+        <div class="container">
+          <div class="col-md-9 col-lg-8">
+            <div class="detail-box">
+              <h1 style="margin-right: -480px;font-size: 4rem;">
+                Sudoku Game
+              </h1><br>
+              <form action="" method="post" name="myForm" onsubmit="return checkInputs()">
+                {% csrf_token %}
+              <div id="additional-controls" style="display: flex;padding: 70px 0; gap: 10px;margin-left: 270px;margin-right: -210px;
+              padding: 10px; margin-bottom: 60px;" >
+                <label for="puzztype">Puzzle Type:</label>
+                <select id="puzzle" name="puzzletype">
+                  <option value="">Select</option>
+                  <option value="4x4">4X4</option>
+                  <option value="6x6">6X6</option>
+                  <option value="9x9">9X9</option>
+                </select>
+                <label for="difflevel">Difficulty Level:</label>
+                <select id="difficulty" name="dl">
+                  <option value="">Select</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
+                <button id="get"style="border-radius: 10%;">Get</button> 
+              </div> 
+              </form>  
+    <div id="game-container">
+        <div id="sudoku-container" style="margin-left: 150px;">
+            <table id="sudoku-grid"></table>
+            <div id="pause-overlay" style="display: none;">Game is Paused</div>
+        </div><br>
+        <div id="right" style="margin-right: 80px; margin-left: 140px;">
+            <button id="new-game">New Puzzle</button>
+            <button id="reset">Reset</button>
+            <button id="pause">Pause</button>
+        </div>
+    </div>
+    <div id="stopwatch-container" style="margin-right: -500px;">
+        <span id="stopwatch">00:00:00</span>
+    </div>
+    </div>
+    </div>
+    </div>
+    </section>
+    <script> var puzzlegrid = "{{ initialgrid }}"; </script>
+    <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'bootstrap.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'custom.js' %}"></script>
+    <script type="module" src="{% static 'puzzlemain.js' %}"></script>
+    <script>
+      function checkInputs() {
+  
+    let i = document.getElementById('puzzle').value;
+    let j = document.getElementById('difficulty').value;
+    if (i === '' || j === '') {
+      
+      return false;
+    }
+    return true;
+}
+    </script>
+</body>
+</html>

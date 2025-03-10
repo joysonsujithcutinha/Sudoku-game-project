@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Rules</title>
+    {% load static %}
+    <!-- bootstrap core css -->
+ <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}" />
+ <!-- font awesome style -->
+ <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet" />
+ <!-- Custom styles for this template -->
+ <link href="{% static 'style.css' %}" rel="stylesheet" />
+ <!-- responsive style -->
+ <link href="{% static 'responsive.css' %}" rel="stylesheet" />
+ <link rel="stylesheet" href="{% static 'rules.css' %}">
+</head>
+<body puzzletype="{{ puzzletype }}" difficultylevel="{{ difficulty }}">
+<header class="header_section">
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg custom_nav-container">
+          <div class="custom_menu-btn">
+            <button onclick="openNav()" style="background-color:beige;">
+              <span class="s-1"> </span>
+              <span class="s-2"> </span>
+              <span class="s-3"> </span>
+            </button>
+            <div id="myNav" class="overlay">
+              <div class="overlay-content">
+                <a href="{% url 'signin' %}">Login</a>
+                <a href="{% url 'rules' %}">Rules</a>
+                <a href="{% url 'puzzlemain' %}">New Game</a>
+                <a href="{% url 'leaderboard' %}">Leaderboard</a>
+                <a href="{% url 'solver' %}">Solver</a>
+                <a href="{% url 'tutor' %}">Tutor</a>
+                <a href="{% url 'about' %}">About</a>
+              </div>
+            </div>
+          </div>
+        </div>
+  </header>
+  <!-- end header section -->
+
+  <!-- slider section -->
+  <section class="slider_section position-relative">
+    <div class="slider_bg_box" style="height: 700%;">
+      <img src="{% static 'back.jpg' %}" alt="">
+    </div>
+    <div class="slider_bg"></div>
+    <div class="container">
+      <div class="col-md-9 col-lg-8">
+        <div class="detail-box">
+          <h1 style="margin-right: -440px; font-size: 4rem;">
+            Game Rules
+          </h1><br>
+
+    <main>
+        <!-- 4x4 Grid Rules -->
+        <section class="rules-section" id="4x4-rules">
+            <h2>Sudoku Rules for 4x4 Grid</h2>
+            <p><strong>Rule 1:</strong> Each row must contain the numbers from 1 to 4, without repetitions. The player must focus on filling each row of the grid while ensuring there are no duplicated numbers. The placement order of the digits is irrelevant.</p>
+            <p>Every puzzle, regardless of the difficulty level, begins with allocated numbers on the grid. The player should use these numbers as clues to find which digits are missing in each row.</p>
+
+            <p><strong>Rule 2:</strong> Each column must contain the numbers from 1 to 4, without repetitions. The Sudoku rules for the columns on the grid are exactly the same as for the rows. The player must also fill these with the numbers from 1 to 4, making sure each digit occurs only once per column.</p>
+            <p>The numbers allocated at the beginning of the puzzle work as clues to find which digits are missing in each column and their position.</p>
+
+            <p><strong>Rule 3:</strong> The digits can only occur once per block. A 4x4 grid is divided into four 2x2 blocks. The numbers from 1 to 4 can only occur once per block.</p>
+            <p>In practice, this means that the process of filling the rows and columns without duplicated digits finds inside each block another restriction to the numbers’ positioning.</p>
+
+            <p><strong>Rule 4:</strong> The sum of every single row, column, and block must equal 10. To find out which numbers are missing from each row, column, or block or if there are any duplicates, the player can simply count or flex their math skills and sum the numbers. When the digits occur only once, the total of each row, column, and group must be 10.</p>
+            <p><strong>1+2+3+4 = 10</strong></p>
+        </section>
+
+        <!-- 6x6 Grid Rules -->
+        <section class="rules-section" id="6x6-rules">
+            <h2>Sudoku Rules for 6x6 Grid</h2>
+            <p><strong>Rule 1:</strong> Each row must contain the numbers from 1 to 6, without repetitions. The player must focus on filling each row of the grid while ensuring there are no duplicated numbers. The placement order of the digits is irrelevant.</p>
+            <p>Every puzzle, regardless of the difficulty level, begins with allocated numbers on the grid. The player should use these numbers as clues to find which digits are missing in each row.</p>
+
+            <p><strong>Rule 2:</strong> Each column must contain the numbers from 1 to 6, without repetitions. The Sudoku rules for the columns on the grid are exactly the same as for the rows. The player must also fill these with the numbers from 1 to 6, making sure each digit occurs only once per column.</p>
+            <p>The numbers allocated at the beginning of the puzzle work as clues to find which digits are missing in each column and their position.</p>
+
+            <p><strong>Rule 3:</strong> The digits can only occur once per block. A 6x6 grid is divided into six 2x3 blocks. The numbers from 1 to 6 can only occur once per block.</p>
+            <p>In practice, this means that the process of filling the rows and columns without duplicated digits finds inside each block another restriction to the numbers’ positioning.</p>
+
+            <p><strong>Rule 4:</strong> The sum of every single row, column, and block must equal 21. To find out which numbers are missing from each row, column, or block or if there are any duplicates, the player can simply count or flex their math skills and sum the numbers. When the digits occur only once, the total of each row, column, and group must be 21.</p>
+            <p><strong>1+2+3+4+5+6 = 21</strong></p>
+        </section>
+
+        <!-- 9x9 Grid Rules -->
+        <section class="rules-section" id="9x9-rules">
+            <h2>Sudoku Rules for 9x9 Grid</h2>
+            <p><strong>Rule 1:</strong> Each row must contain the numbers from 1 to 9, without repetitions. The player must focus on filling each row of the grid while ensuring there are no duplicated numbers. The placement order of the digits is irrelevant.</p>
+            <p>Every puzzle, regardless of the difficulty level, begins with allocated numbers on the grid. The player should use these numbers as clues to find which digits are missing in each row.</p>
+
+            <p><strong>Rule 2:</strong> Each column must contain the numbers from 1 to 9, without repetitions. The Sudoku rules for the columns on the grid are exactly the same as for the rows. The player must also fill these with the numbers from 1 to 9, making sure each digit occurs only once per column.</p>
+            <p>The numbers allocated at the beginning of the puzzle work as clues to find which digits are missing in each column and their position.</p>
+
+            <p><strong>Rule 3:</strong> The digits can only occur once per block (nonet). A regular 9x9 grid is divided into 9 smaller blocks of 3x3, also known as nonets. The numbers from 1 to 9 can only occur once per nonet.</p>
+            <p>In practice, this means that the process of filling the rows and columns without duplicated digits finds inside each block another restriction to the numbers’ positioning.</p>
+
+            <p><strong>Rule 4:</strong> The sum of every single row, column, and nonet must equal 45. To find out which numbers are missing from each row, column, or block or if there are any duplicates, the player can simply count or flex their math skills and sum the numbers. When the digits occur only once, the total of each row, column, and group must be 45.</p>
+            <p><strong>1+2+3+4+5+6+7+8+9 = 45</strong></p>
+        </section>
+
+        <!-- Additional Details -->
+        <section class="additional-details">
+            <h2>Additional Details</h2>
+            <p><strong>1. Each puzzle has a unique solution:</strong> Each Sudoku puzzle has only one possible solution that can only be achieved by following the Sudoku rules correctly. Multiple solutions only occur when the puzzle is poorly designed or, the most frequent reason, when the player makes a mistake in its resolution and a duplicate is hidden somewhere on the grid.</p>
+
+            <p><strong>2. Guessing is not allowed:</strong> Trying to guess the solution for each cell is not allowed under Sudoku rules. These are logical number puzzles. The numbers allocated at the beginning of the game are the only clues the player needs to solve the grid.</p>
+
+            <p><strong>3. Notes and techniques:</strong> Writing down the numbers that are candidates for each cell is allowed by Sudoku rules and is even encouraged. These help the player keep track of their progress and keep their reasoning organized and clear. As the difficulty level of these puzzles increases, these notes also become essential to apply the advanced solving techniques required to complete the grid.</p>
+        </section>
+    </main>
+    </div>
+    </div>
+    </div>
+    </div>
+</nav>
+    </section>
+    <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+    <!-- bootstrap js -->
+    <script src="{% static 'bootstrap.js' %}"></script>
+    <!-- custom js -->
+    <script src="{% static 'custom.js' %}"></script>
+    <script type="module" src="{% static 'puzzlemain.js' %}"></script>
+</body>
+</html>

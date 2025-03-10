@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video with Audio Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        #video {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Create a Video with Audio</h1>
+    
+    <label for="videoText">Enter Text for Video (Optional):</label>
+    <input type="text" id="videoText" placeholder="Enter text here">
+
+    <h2>Record Your Audio:</h2>
+    <button id="startRecording">Start Recording</button>
+    <button id="stopRecording" disabled>Stop Recording</button>
+    <button id="downloadVideo" disabled>Download Video</button>
+
+    <video id="video" controls></video>
+
+    <script src="script.js"></script>
+</body>
+</html>

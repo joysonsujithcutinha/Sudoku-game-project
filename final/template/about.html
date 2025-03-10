@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sudoku Game</title>
+    {% load static %}
+    <!-- bootstrap core css -->
+ <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}" />
+ <!-- font awesome style -->
+ <link href="{% static 'font-awesome.min.css' %}" rel="stylesheet" />
+ <!-- Custom styles for this template -->
+ <link href="{% static 'style.css' %}" rel="stylesheet" />
+ <!-- responsive style -->
+ <link href="{% static 'responsive.css' %}" rel="stylesheet" />
+<link rel="stylesheet" href="{% static 'about.css' %}" />
+</head>
+<body puzzletype="{{ puzzletype }}">
+    {% csrf_token %}
+    <header class="header_section" style="padding-bottom:30px; background-color: black;">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
+              <div class="custom_menu-btn">
+                <button onclick="openNav()" style="background-color:white;border: 1px solid black;">
+                  <span class="s-1"> </span>
+                  <span class="s-2"> </span>
+                  <span class="s-3"> </span>
+                </button>
+                <div id="myNav" class="overlay">
+                  <div class="overlay-content">
+                    <a href="{% url 'signin' %}">Login</a>
+                    <a href="{% url 'rules' %}">Rules</a>
+                    <a href="{% url 'puzzlemain' %}">New Game</a>
+                    <a href="{% url 'leaderboard' %}">Leaderboard</a>
+                    <a href="{% url 'solver' %}">Solver</a>
+                    <a href="{% url 'tutor' %}">Tutor</a>
+                    <a href="{% url 'about' %}">About</a>
+                  </div>
+                </div>
+              </div>
+            </nav>
+            </div>
+      </header>
+      <!-- end header section -->
+      <!-- slider section -->
+      <section class="about_section  layout_padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="img-box">
+                <img src="{% static 'about.webp' %}" height="300px" width="300px" alt="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="detail-box">
+                <div class="heading_container">
+                  <h2>
+                    About Me
+                  </h2>
+                </div>
+                <p>
+                  Hello! I am Joyson Sujith Cutinha, a passionate designer, passionate about game design 
+                  and logic puzzles. I created a Sudoku game that supports a variety of grid sizes—4x4, 6x6, 
+                  and 9x9—for both beginners and experienced players. My goal with this project was to 
+                  combine my love of coding with the challenge of creating a fun educational game. 
+                  I hope players enjoy the way of thinking and problem solving that Sudoku offers as much 
+                  as I do!
+                  In my spare time, I enjoy exploring new programming languages, tackling complex algorithms,
+                   and participating in coding challenges. I'm excited to continue to develop my skills and 
+                   take on more interactive projects in the future!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  <script src="{% static 'jquery-3.4.1.min.js' %}"></script>
+  <!-- bootstrap js -->
+  <script src="{% static 'bootstrap.js' %}"></script>
+  <!-- custom js -->
+  <script src="{% static 'custom.js' %}"></script>
+  <div id="foot" style="padding-bottom: 30px;background-color: black;">
+</div>
+</body>
+</html>
